@@ -7,7 +7,7 @@ const app = express();
 const listenPort = 8080;
 const server = net.createServer((socket)=>{
     console.log("Connect: ",socket.remoteAddress+":"+socket.remotePort);
-
+    
     socket.on('data',(data)=>{
         console.log("Receive data:",data);
     })
