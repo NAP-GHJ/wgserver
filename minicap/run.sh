@@ -32,7 +32,8 @@ if [ "$1" = "autosize" ]; then
     h=$(adb shell dumpsys window | grep -Eo 'DisplayHeight=[0-9]+' | head -1 | cut -d= -f 2)
     size="${w}x${h}"
   fi
-  args="-P $size@$size/0"
+  # args="-P $size@$size/0"
+  args="-P $size@360x640/0"
   set -o pipefail
   shift
 fi
