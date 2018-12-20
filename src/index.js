@@ -7,9 +7,11 @@ const app = express();
 const listenPort = 8080;
 const server = net.createServer((socket)=>{
     console.log("Connect: ",socket.remoteAddress+":"+socket.remotePort);
-    
+    socket.setEncoding("utf-8")
+
     socket.on('data',(data)=>{
         console.log("Receive data:",data);
+        socket.write(data)
     })
 
     socket.on('error',(err)=>{
@@ -19,6 +21,7 @@ const server = net.createServer((socket)=>{
     socket.on('close',(data)=>{
         console.log('Socket client close:',data);
     })
+    
 }).listen(listenPort);
 
 //服务器监听事件
